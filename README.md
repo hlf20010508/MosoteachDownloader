@@ -11,3 +11,6 @@
 git clone https://github.com/hlf20010508/MosoteachDownloader.git
 cd MosoteachDownloader
 bash make.sh
+
+软件将自动复制到系统应用程序文件夹中
+如果要更改位置，可以更改make.sh中的最后一行

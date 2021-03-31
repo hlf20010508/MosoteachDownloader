@@ -40,10 +40,10 @@ class MosoteachSpider(scrapy.Spider):
 
     def parse(self, response):
         item = MosoteachspiderItem()
-        link = response.xpath('//div[@class="res-row-open-enable res-row preview " or @class="res-row-open-enable res-row preview-file "]/@data-href').extract()
+        link = response.xpath('//div[@class="res-row-open-enable res-row preview " or @class="res-row-open-enable res-row preview-file " or @class="res-row-open-enable res-row download-res "]/@data-href').extract()
         item['link'] = link
-        name = response.xpath('//div[@class="res-row-open-enable res-row preview " or @class="res-row-open-enable res-row preview-file "]//span[@class="res-name"]//text()').extract()
+        name = response.xpath('//div[@class="res-row-open-enable res-row preview " or @class="res-row-open-enable res-row preview-file " or @class="res-row-open-enable res-row download-res "]//span[@class="res-name"]//text()').extract()
         item['name'] = name
-        size=response.xpath('//div[@class="res-row-open-enable res-row preview " or @class="res-row-open-enable res-row preview-file "]//div[@class="create-box manual-order-hide-part"]//span[1]//text()').extract()
+        size=response.xpath('//div[@class="res-row-open-enable res-row preview " or @class="res-row-open-enable res-row preview-file " or @class="res-row-open-enable res-row download-res "]//div[@class="create-box manual-order-hide-part"]//span[1]//text()').extract()
         item['size']=size
         return item

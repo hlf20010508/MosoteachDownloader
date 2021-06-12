@@ -4,6 +4,8 @@ import frozen_dir
 from syscmd import cmd
 from custom_widget import multipleList,scrollable_frame,Warning,window_focus,spacex,spacey
 from data_operation import get_data,write_data
+from selenium import webdriver
+import json
 
 class Crawl_page:
     def __init__(self,master):
@@ -242,6 +244,58 @@ class Main_page():
 
 class Cookie_page:
     def __init__(self,master):
+        self.url='https://www.mosoteach.cn/web/'
+        
+        self.root=master
+        self.root.title('更新Cookie')
+        self.root.geometry('200x70')
+        
+        self.frame=tk.Frame(self.root)
+        self.frame.pack()
+        
+        spacey(self.frame,10)
+        
+        label=tk.Label(
+            self.frame,
+            text='请在登录好账号后点击确认！')
+        label.pack()
+        
+        button=tk.Button(
+            self.frame,
+            text='确认',
+            command=self.confirm)
+        button.pack()
+        
+        spacey(self.frame,10)
+        
+        try:
+            self.driver = webdriver.Chrome('/Applications/chromedriver')
+            self.driver.get(self.url)
+        except Exception as e:
+            Warning([str(e)],1)
+            self.close()
+    
+    def confirm(self):
+        try:
+            dictCookies = self.driver.get_cookies()
+            jsonCookies = json.dumps(dictCookies)
+            # 登录完成后，将cookie保存到本地
+            f=open(frozen_dir.app_path()+'/cookie.json','w+')
+            f.write(jsonCookies)
+            Warning(['账号保存成功！'],1)
+            self.driver.close()
+            self.driver.quit()
+            self.close()
+        except:
+            Warning(['错误，请不要提前关闭浏览器！'],1)
+            self.close()
+    
+    def close(self):
+        self.frame.destroy()
+        Main_page(self.root)
+'''
+class Cookie_page:
+    def __init__(self,master):
         self.root=master
         self.root.title('更新Cookie')
         self.root.geometry('500x320')
@@ -422,7 +476,7 @@ class Cookie_page:
         name='名称: '+item[0]
         value='值: '+item[1]
         Warning((name,value),2)
-
+'''
 class Download_page:
     def __init__(self,master):
         self.width=700

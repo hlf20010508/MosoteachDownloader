@@ -5,3 +5,6 @@ course.txt
 courses.txt
 linksAll.txt
 scrapyLocation.txt
+*.pyc
+*.pyc
+*.pyc

@@ -1,4 +1,3 @@
-# MosoteachDownloader
 用来下载蓝墨云班课上的资源
 
 运行于Macos
@@ -10,12 +9,14 @@
 
 
 通过源码编译方式如下：
+```
 
 git clone https://github.com/hlf20010508/MosoteachDownloader.git
 
 cd MosoteachDownloader
 
 bash make.sh
+```
 
 
 

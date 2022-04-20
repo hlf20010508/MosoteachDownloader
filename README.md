@@ -6,7 +6,7 @@
 
 本软件使用Python写成，使用Tkinter可视化，依赖scrapy，需要chromedriver且chromedriver需要放置在系统应用程序文件夹中，需要pyinstaller来make
 
-
+<br/>
 
 通过源码编译方式如下：
 ```
@@ -17,16 +17,13 @@ cd MosoteachDownloader
 
 bash make.sh
 ```
-
-
+<br/>
 
 软件将自动复制到系统应用程序文件夹中
 
 如果要更改位置，可以更改make.sh中的最后一行
 
-
-
-
+<br/>
 使用方法：
 
 点击更新Cookie
